@@ -7,7 +7,7 @@ function removeLocale(urlStr) {
     const segments = u.pathname.split("/").filter(Boolean);
     if (segments.length && /^[a-z]{2}-[a-z]{2}$/i.test(segments[0])) {
       segments.shift();
-      u.pathname = "/" + segments.join("/") + (u.pathname.endsWith("/") && segments.length ? "/" : "");
+      u.pathname = "/" + segments.join("/");
     }
     return u.toString();
   } catch (e) {
