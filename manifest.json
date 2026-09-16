@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "MS Student Ambassador - Contributor ID Sharer",
   "version": "1.0.0",
-  "description": "Ajoute automatiquement ton Contributor ID aux liens Microsoft Learn/Docs et garde un historique des ressources partagées (programme Microsoft Student Ambassador).",
+  "description": "Automatically adds your Contributor ID to Microsoft Learn/Docs links and keeps a history of shared resources (Microsoft Student Ambassador program).",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {

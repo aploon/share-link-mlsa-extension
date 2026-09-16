@@ -1,44 +1,44 @@
 # MSA Link Sharer
 
-Extension Chrome pour les Microsoft Student Ambassadors (parcours *Community Influencer*).
-Elle ajoute automatiquement ton **Contributor ID** aux liens Microsoft éligibles et garde un
-historique des ressources que tu as apprises/partagées.
+Chrome extension for Microsoft Student Ambassadors (*Community Influencer* path).
+It automatically adds your **Contributor ID** to eligible Microsoft links and keeps a
+history of the resources you have learned from / shared.
 
-## Ce qu'elle fait
+## What it does
 
-1. Récupère l'URL de l'onglet actif.
-2. Supprime le segment de langue-locale s'il existe (`en-us/`, `fr-fr/`, etc.).
-3. Ajoute ton Contributor ID à la fin :
-   - `?wt.mc_id=studentamb_######` si l'URL n'a pas encore de paramètre,
-   - `&wt.mc_id=studentamb_######` si l'URL contient déjà un `?` (donc un autre `mc_id`).
-4. Te permet de copier le lien, de le sauvegarder dans une liste, ou de le partager
-   directement sur X / LinkedIn.
-5. Garde un historique local (exportable en CSV) de toutes les ressources sauvegardées.
+1. Gets the URL of the active tab.
+2. Removes the language-locale segment if present (`en-us/`, `fr-fr/`, etc.).
+3. Appends your Contributor ID at the end:
+   - `?wt.mc_id=studentamb_######` if the URL has no query parameters yet,
+   - `&wt.mc_id=studentamb_######` if the URL already contains a `?` (e.g. another `mc_id`).
+4. Lets you copy the link, save it to a list, or share it
+   directly on X / LinkedIn.
+5. Keeps a local history (exportable as CSV) of all saved resources.
 
-## Installation (mode développeur)
+## Installation (developer mode)
 
-1. Décompresse le dossier `ms-student-amb-extension`.
-2. Ouvre Chrome et va sur `chrome://extensions`.
-3. Active le **Mode développeur** (en haut à droite).
-4. Clique sur **Charger l'extension non empaquetée**.
-5. Sélectionne le dossier `ms-student-amb-extension`.
-6. Épingle l'extension dans la barre d'outils (icône puzzle 🧩 → épingle).
+1. Unzip the `ms-student-amb-extension` folder.
+2. Open Chrome and go to `chrome://extensions`.
+3. Enable **Developer mode** (top right).
+4. Click **Load unpacked**.
+5. Select the `ms-student-amb-extension` folder.
+6. Pin the extension in the toolbar (puzzle icon 🧩 → pin).
 
-## Configuration
+## Setup
 
-1. Clique sur l'icône de l'extension.
-2. Entre ton **Contributor ID** (format `studentamb_######`, disponible sur ton dashboard Ambassador).
-   Il est sauvegardé automatiquement et synchronisé entre tes appareils Chrome connectés.
+1. Click the extension icon.
+2. Enter your **Contributor ID** (format `studentamb_######`, available on your Ambassador dashboard).
+   It is saved automatically and synced across your signed-in Chrome devices.
 
-## Utilisation
+## Usage
 
-1. Va sur une page Microsoft Learn / Docs / TechCommunity / DevBlogs que tu veux partager.
-2. Clique sur l'icône de l'extension.
-3. Le lien avec ton Contributor ID est généré automatiquement.
-4. Copie-le, sauvegarde-le dans ta liste, ou partage-le directement sur X/LinkedIn.
+1. Go to a Microsoft Learn / Docs / TechCommunity / DevBlogs page you want to share.
+2. Click the extension icon.
+3. The link with your Contributor ID is generated automatically.
+4. Copy it, save it to your list, or share it directly on X/LinkedIn.
 
-## Remarque
+## Note
 
-L'extension avertit (⚠️) si l'URL ne semble pas provenir d'un domaine Microsoft connu,
-mais te laisse quand même générer et copier le lien — vérifie toujours l'éligibilité
-du contenu selon les règles du programme.
+The extension warns (⚠️) if the URL does not appear to come from a known Microsoft domain,
+but still lets you generate and copy the link — always verify content eligibility
+against the program rules.

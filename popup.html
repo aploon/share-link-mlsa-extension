@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <title>MSA Link Sharer</title>
@@ -8,48 +8,48 @@
 <body>
   <header>
     <h1><span class="logo-dots"><span></span><span></span><span></span><span></span></span> MSA Link Sharer</h1>
-    <p>Partage tes ressources Microsoft avec ton Contributor ID</p>
+    <p>Share your Microsoft resources with your Contributor ID</p>
   </header>
 
   <main>
     <div class="section">
-      <label for="contributorId">Ton Contributor ID (studentamb_######)</label>
+      <label for="contributorId">Your Contributor ID (studentamb_######)</label>
       <input type="text" id="contributorId" placeholder="studentamb_123456" />
     </div>
 
     <div class="section">
-      <label>URL de l'onglet actif</label>
+      <label>Active tab URL</label>
       <div class="url-box" id="originalUrl">—</div>
       <div class="warning" id="notMsWarning" style="display:none;">
-        ⚠️ Cette URL ne semble pas provenir d'un domaine Microsoft. Vérifie qu'elle est éligible avant de la partager.
+        ⚠️ This URL does not appear to come from a Microsoft domain. Check that it is eligible before sharing.
       </div>
     </div>
 
     <div class="section">
-      <label>Lien avec ton Contributor ID</label>
+      <label>Link with your Contributor ID</label>
       <div class="url-box result" id="resultUrl">—</div>
       <div class="row">
-        <button class="btn-primary" id="copyBtn">📋 Copier</button>
-        <button class="btn-secondary" id="saveBtn">⭐ Sauvegarder</button>
+        <button class="btn-primary" id="copyBtn">📋 Copy</button>
+        <button class="btn-secondary" id="saveBtn">⭐ Save</button>
       </div>
       <div class="row share-row">
-        <button class="share-x" id="shareX" title="Partager sur X">𝕏</button>
-        <button class="share-linkedin" id="shareLinkedin" title="Partager sur LinkedIn">in</button>
-        <button class="share-copy" id="shareCopy" title="Copier le lien">🔗</button>
+        <button class="share-x" id="shareX" title="Share on X">𝕏</button>
+        <button class="share-linkedin" id="shareLinkedin" title="Share on LinkedIn">in</button>
+        <button class="share-copy" id="shareCopy" title="Copy link">🔗</button>
       </div>
     </div>
 
     <div class="section">
       <div class="history-header">
-        <h2>Mes ressources partagées</h2>
-        <button class="link-btn" id="exportBtn">Exporter (CSV)</button>
+        <h2>My shared resources</h2>
+        <button class="link-btn" id="exportBtn">Export (CSV)</button>
       </div>
       <div id="history"></div>
     </div>
   </main>
 
   <footer>
-    <a href="options.html" target="_blank">Modifier mon Contributor ID / options</a>
+    <a href="options.html" target="_blank">edit my Contributor ID / options</a>
   </footer>
 
   <div class="toast" id="toast"></div>

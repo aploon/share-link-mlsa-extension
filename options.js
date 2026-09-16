@@ -8,7 +8,7 @@ chrome.storage.sync.get(["contributorId"], (data) => {
 document.getElementById("saveBtn").addEventListener("click", () => {
   const id = input.value.trim();
   chrome.storage.sync.set({ contributorId: id }, () => {
-    status.textContent = "Enregistré ✓";
+    status.textContent = "Saved ✓";
     setTimeout(() => (status.textContent = ""), 1500);
   });
 });

@@ -1,6 +1,6 @@
-// ---- Utilitaires de transformation d'URL selon les règles Microsoft Student Ambassador ----
+// ---- URL transformation utilities based on Microsoft Student Ambassador rules ----
 
-// Retire le segment de langue-locale (ex: en-us/, fr-fr/) juste après le domaine
+// Remove the language-locale segment (e.g. en-us/, fr-fr/) right after the domain
 function removeLocale(urlStr) {
   try {
     const u = new URL(urlStr);
@@ -15,7 +15,7 @@ function removeLocale(urlStr) {
   }
 }
 
-// Ajoute le Contributor ID à la fin, en gérant "?" vs "&"
+// Append the Contributor ID, handling "?" vs "&"
 function addContributorId(urlStr, contributorId) {
   if (!contributorId) return urlStr;
   const separator = urlStr.includes("?") ? "&" : "?";
@@ -38,14 +38,14 @@ function isLikelyMicrosoftUrl(urlStr) {
       "devblogs.microsoft.com",
       "azure.microsoft.com",
       "visualstudio.com",
-      "github.com" // Microsoft-owned, parfois éligible selon programme
+      "github.com" // Microsoft-owned, sometimes eligible depending on the program
     ].some((d) => host === d || host.endsWith("." + d));
   } catch (e) {
     return false;
   }
 }
 
-// ---- État et éléments DOM ----
+// ---- State and DOM elements ----
 const el = {
   contributorId: document.getElementById("contributorId"),
   originalUrl: document.getElementById("originalUrl"),
@@ -71,7 +71,7 @@ function showToast(msg) {
 }
 
 function copyToClipboard(text) {
-  navigator.clipboard.writeText(text).then(() => showToast("Lien copié !"));
+  navigator.clipboard.writeText(text).then(() => showToast("Link copied!"));
 }
 
 function refreshResult() {
@@ -81,7 +81,7 @@ function refreshResult() {
   el.originalUrl.textContent = currentTab.url;
   el.notMsWarning.style.display = isLikelyMicrosoftUrl(currentTab.url) ? "none" : "block";
 
-  currentSharableLink = buildSharableLink(currentTab.url, id || "TON_ID_ICI");
+  currentSharableLink = buildSharableLink(currentTab.url, id || "YOUR_ID_HERE");
   el.resultUrl.textContent = currentSharableLink;
 }
 
@@ -102,7 +102,7 @@ el.copyBtn.addEventListener("click", () => copyToClipboard(currentSharableLink))
 el.shareCopy.addEventListener("click", () => copyToClipboard(currentSharableLink));
 
 el.shareX.addEventListener("click", () => {
-  const text = encodeURIComponent(`Je viens d'apprendre quelque chose avec ${currentTab.title || "cette ressource Microsoft"} 👇`);
+  const text = encodeURIComponent(`I just learned something with ${currentTab.title || "this Microsoft resource"} 👇`);
   const url = encodeURIComponent(currentSharableLink);
   chrome.tabs.create({ url: `https://twitter.com/intent/tweet?text=${text}&url=${url}` });
 });
@@ -115,7 +115,7 @@ el.shareLinkedin.addEventListener("click", () => {
 el.saveBtn.addEventListener("click", () => {
   const id = el.contributorId.value.trim();
   if (!id) {
-    showToast("Ajoute d'abord ton Contributor ID");
+    showToast("Add your Contributor ID first");
     return;
   }
   chrome.storage.local.get(["history"], (data) => {
@@ -128,7 +128,7 @@ el.saveBtn.addEventListener("click", () => {
     });
     chrome.storage.local.set({ history }, () => {
       renderHistory(history);
-      showToast("Ajouté à ta liste !");
+      showToast("Added to your list!");
     });
   });
 });
@@ -137,16 +137,16 @@ el.exportBtn.addEventListener("click", () => {
   chrome.storage.local.get(["history"], (data) => {
     const history = data.history || [];
     if (!history.length) {
-      showToast("Aucune ressource à exporter");
+      showToast("No resources to export");
       return;
     }
-    const rows = [["Titre", "URL originale", "URL partagée", "Date"]];
+    const rows = [["Title", "Original URL", "Shared URL", "Date"]];
     history.forEach((h) => rows.push([h.title, h.originalUrl, h.sharableUrl, h.date]));
     const csv = rows.map((r) => r.map((c) => `"${(c || "").replace(/"/g, '""')}"`).join(",")).join("\n");
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     chrome.downloads
-      ? chrome.downloads.download({ url, filename: "mes-ressources-msa.csv" })
+      ? chrome.downloads.download({ url, filename: "my-msa-resources.csv" })
       : window.open(url);
   });
 });
@@ -154,7 +154,7 @@ el.exportBtn.addEventListener("click", () => {
 function renderHistory(history) {
   el.history.innerHTML = "";
   if (!history.length) {
-    el.history.innerHTML = '<div class="empty">Aucune ressource sauvegardée pour le moment.</div>';
+    el.history.innerHTML = '<div class="empty">No saved resources yet.</div>';
     return;
   }
   history.forEach((item, index) => {
@@ -164,9 +164,9 @@ function renderHistory(history) {
       <div class="title">${escapeHtml(item.title)}</div>
       <div class="link">${escapeHtml(item.sharableUrl)}</div>
       <div class="actions">
-        <button class="btn-secondary copy-item">Copier</button>
-        <button class="btn-secondary open-item">Ouvrir</button>
-        <button class="btn-secondary delete-item" style="color:var(--danger)">Supprimer</button>
+        <button class="btn-secondary copy-item">Copy</button>
+        <button class="btn-secondary open-item">Open</button>
+        <button class="btn-secondary delete-item" style="color:var(--danger)">Delete</button>
       </div>
     `;
     div.querySelector(".copy-item").addEventListener("click", () => copyToClipboard(item.sharableUrl));
@@ -189,7 +189,7 @@ function loadHistory() {
   chrome.storage.local.get(["history"], (data) => renderHistory(data.history || []));
 }
 
-// ---- Initialisation ----
+// ---- Initialization ----
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const tab = tabs[0];
   currentTab = { url: tab.url || "", title: tab.title || "" };
