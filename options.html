@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Options - MSA Link Sharer</title>
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #1e1e1e;
+    color: #f2f2f2;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  h1 { font-size: 18px; }
+  p { color: #a0a0a0; font-size: 13px; line-height: 1.5; }
+  label { display:block; margin-top: 16px; font-size: 12px; color: #a0a0a0; }
+  input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #3a3a3a;
+    background: #262626;
+    color: #fff;
+    font-size: 13px;
+  }
+  button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #00a4ef;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .status { margin-top: 10px; font-size: 12px; color: #7fba00; height: 16px; }
+  a { color: #00a4ef; }
+</style>
+</head>
+<body>
+  <h1>⚙️ Réglages - MSA Link Sharer</h1>
+  <p>
+    Ton Contributor ID te permet de suivre les impressions générées par les liens que tu partages
+    dans le cadre du programme Microsoft Student Ambassador (parcours Community Influencer).
+    Tu le trouves sur ton tableau de bord Ambassador.
+  </p>
+  <label for="contributorId">Contributor ID</label>
+  <input type="text" id="contributorId" placeholder="studentamb_123456" />
+  <button id="saveBtn">Enregistrer</button>
+  <div class="status" id="status"></div>
+</body>
+<script src="options.js"></script>
+</html>

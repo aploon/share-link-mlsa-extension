@@ -1,0 +1,240 @@
+:root {
+  --bg: #1e1e1e;
+  --panel: #262626;
+  --border: #3a3a3a;
+  --text: #f2f2f2;
+  --muted: #a0a0a0;
+  --accent: #00a4ef;
+  --green: #7fba00;
+  --orange: #f25022;
+  --yellow: #ffb900;
+  --danger: #e05252;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 360px;
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  padding: 12px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+  font-size: 14px;
+  margin: 0 0 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+header p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.logo-dots {
+  display: inline-grid;
+  grid-template-columns: 6px 6px;
+  grid-template-rows: 6px 6px;
+  gap: 1px;
+}
+.logo-dots span:nth-child(1) { background: var(--orange); }
+.logo-dots span:nth-child(2) { background: var(--green); }
+.logo-dots span:nth-child(3) { background: var(--accent); }
+.logo-dots span:nth-child(4) { background: var(--yellow); }
+.logo-dots span { width: 6px; height: 6px; }
+
+main {
+  padding: 12px 14px;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 7px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 12px;
+}
+
+.url-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 11px;
+  word-break: break-all;
+  max-height: 70px;
+  overflow-y: auto;
+}
+
+.url-box.result {
+  border-color: var(--accent);
+}
+
+.warning {
+  font-size: 11px;
+  color: var(--yellow);
+  margin-top: 4px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-secondary {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover, .btn-primary:hover { filter: brightness(1.1); }
+
+.share-row button {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.share-x { background: #000; color: #fff; }
+.share-linkedin { background: #0a66c2; color: #fff; }
+.share-copy { background: var(--green); color: #fff; }
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-header h2 {
+  font-size: 12px;
+  margin: 0;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 11px;
+  padding: 0;
+  flex: none;
+}
+
+#history {
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 6px;
+}
+
+.history-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.history-item .title {
+  font-weight: 600;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item .link {
+  color: var(--muted);
+  word-break: break-all;
+  font-size: 10px;
+}
+
+.history-item .actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.history-item .actions button {
+  flex: none;
+  padding: 3px 7px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.toast {
+  position: fixed;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity .2s;
+  pointer-events: none;
+}
+.toast.show { opacity: 1; }
+
+footer {
+  text-align: center;
+  padding: 6px 0 10px;
+}
+footer a {
+  color: var(--muted);
+  font-size: 10px;
+  text-decoration: none;
+}
+footer a:hover { color: var(--accent); }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>MSA Link Sharer</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1><span class="logo-dots"><span></span><span></span><span></span><span></span></span> MSA Link Sharer</h1>
+    <p>Partage tes ressources Microsoft avec ton Contributor ID</p>
+  </header>
+
+  <main>
+    <div class="section">
+      <label for="contributorId">Ton Contributor ID (studentamb_######)</label>
+      <input type="text" id="contributorId" placeholder="studentamb_123456" />
+    </div>
+
+    <div class="section">
+      <label>URL de l'onglet actif</label>
+      <div class="url-box" id="originalUrl">—</div>
+      <div class="warning" id="notMsWarning" style="display:none;">
+        ⚠️ Cette URL ne semble pas provenir d'un domaine Microsoft. Vérifie qu'elle est éligible avant de la partager.
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Lien avec ton Contributor ID</label>
+      <div class="url-box result" id="resultUrl">—</div>
+      <div class="row">
+        <button class="btn-primary" id="copyBtn">📋 Copier</button>
+        <button class="btn-secondary" id="saveBtn">⭐ Sauvegarder</button>
+      </div>
+      <div class="row share-row">
+        <button class="share-x" id="shareX" title="Partager sur X">𝕏</button>
+        <button class="share-linkedin" id="shareLinkedin" title="Partager sur LinkedIn">in</button>
+        <button class="share-copy" id="shareCopy" title="Copier le lien">🔗</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="history-header">
+        <h2>Mes ressources partagées</h2>
+        <button class="link-btn" id="exportBtn">Exporter (CSV)</button>
+      </div>
+      <div id="history"></div>
+    </div>
+  </main>
+
+  <footer>
+    <a href="options.html" target="_blank">Modifier mon Contributor ID / options</a>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
